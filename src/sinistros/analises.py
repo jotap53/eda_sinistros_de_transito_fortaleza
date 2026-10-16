@@ -349,11 +349,42 @@ def passo10_quanti_quali(df):
 # ---------------------------------------------------------------- Hipóteses
 
 def h1_madrugada_fim_de_semana(df):
-    """H1: a chance de um acidente ser fatal é maior de madrugada e no fim de semana.
+    """H1: há mais mortes na madrugada do fim de semana do que na madrugada de dia útil.
 
-    Efeitos separados (risco relativo) e regressão logística ajustada por
-    faixa horária, fim de semana, perfil de veículos e ano.
+    Compara a madrugada (0h-6h) de sábado e domingo com a de segunda a sexta:
+    (1) mortes por dia, com razão de taxas de Poisson e IC 95%;
+    (2) letalidade (% de acidentes fatais), com risco relativo;
+    (3) regressão logística só com os acidentes da madrugada, ajustada por
+        perfil de veículos e ano.
+    Como complemento, o modelo com todas as faixas horárias mostra que o fim
+    de semana também pesa nas outras faixas.
     """
+    # (1) Mortes por dia em cada faixa horária, por tipo de dia
+    dias = df.groupby("fim_de_semana")["data"].nunique()
+    mortes = (df.groupby(["fim_de_semana", "faixa_horaria"], observed=True)
+              .agg(acidentes=("data", "size"), mortos=("mortos", "sum")).reset_index())
+    mortes["dias"] = mortes["fim_de_semana"].map(dias)
+    mortes["mortos_100_dias"] = 100 * mortes["mortos"] / mortes["dias"]
+    mortes["acidentes_dia"] = mortes["acidentes"] / mortes["dias"]
+
+    madr = mortes[mortes["faixa_horaria"] == "Madrugada"].set_index("fim_de_semana")
+    m_fds, m_util = madr.loc[True, "mortos"], madr.loc[False, "mortos"]
+    razao_mortes = (m_fds / dias[True]) / (m_util / dias[False])
+    erro = np.sqrt(1 / m_fds + 1 / m_util)
+    ic_mortes = np.exp(np.log(razao_mortes) + np.array([-1.96, 1.96]) * erro)
+    p_mortes = 2 * stats.norm.sf(abs(np.log(razao_mortes) / erro))
+
+    # (2) Letalidade na madrugada: fim de semana x dia útil
+    madrugada = df[df["madrugada"]]
+    rr_letalidade = est.risco_relativo(madrugada, "fim_de_semana", "fatal")
+
+    # (3) Só a madrugada, ajustado por veículos e ano
+    vm = _com_veiculos(madrugada).assign(perfil=lambda d: d["perfil_veiculos"].astype(str))
+    vm = vm[vm["perfil"] != "Outros"]
+    modelo_madr = est.regressao_logistica(
+        vm, "fatal ~ fim_de_semana + C(perfil, Treatment('Só automóvel')) + C(ano)")
+    or_madr = est.tabela_coeficientes(modelo_madr).loc["fim_de_semana[T.True]"]
+
     rr_madrugada = est.risco_relativo(df, "madrugada", "fatal")
     rr_fds = est.risco_relativo(df, "fim_de_semana", "fatal")
 
@@ -390,8 +421,22 @@ def h1_madrugada_fim_de_semana(df):
                                   "rr_ic", "or", "or_ic", "p")}
 
     return {
-        "odds_ratios": ors, "modelo": modelo,
+        "odds_ratios": ors, "modelo": modelo, "mortes_por_dia": mortes,
         "resumo": {
+            "madrugada_mortos_100_dias_fds": float(madr.loc[True, "mortos_100_dias"]),
+            "madrugada_mortos_100_dias_util": float(madr.loc[False, "mortos_100_dias"]),
+            "madrugada_mortos_fds": int(m_fds), "madrugada_mortos_util": int(m_util),
+            "dias_fds": int(dias[True]), "dias_util": int(dias[False]),
+            "razao_mortes_dia": float(razao_mortes),
+            "razao_mortes_dia_ic": [float(ic_mortes[0]), float(ic_mortes[1])],
+            "razao_mortes_dia_p": float(p_mortes),
+            "letalidade_madrugada_fds": rr_letalidade["risco_exposto_pct"],
+            "letalidade_madrugada_util": rr_letalidade["risco_nao_exposto_pct"],
+            "rr_letalidade_madrugada": rr_letalidade["rr"],
+            "rr_letalidade_madrugada_ic": rr_letalidade["rr_ic"],
+            "or_madrugada_ajustado": float(or_madr["coef"]),
+            "or_madrugada_ajustado_ic": [float(or_madr["ic_inf"]), float(or_madr["ic_sup"])],
+            "or_madrugada_ajustado_p": float(or_madr["p"]),
             "rr_madrugada": r(rr_madrugada), "rr_fim_de_semana": r(rr_fds),
             "or_ajustado": {i: {"or": float(x.coef), "ic": [float(x.ic_inf), float(x.ic_sup)],
                                 "p": float(x.p)} for i, x in ors.iterrows()},

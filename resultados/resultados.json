@@ -381,6 +381,31 @@
     "r2_tautologico_feridos_severidade": 0.4415582451738952
   },
   "h1": {
+    "madrugada_mortos_100_dias_fds": 15.804597701149426,
+    "madrugada_mortos_100_dias_util": 9.505557684936758,
+    "madrugada_mortos_fds": 165,
+    "madrugada_mortos_util": 248,
+    "dias_fds": 1044,
+    "dias_util": 2609,
+    "razao_mortes_dia": 1.6626691694475342,
+    "razao_mortes_dia_ic": [
+      1.3654940152122557,
+      2.0245191383000223
+    ],
+    "razao_mortes_dia_p": 4.175044508522499e-07,
+    "letalidade_madrugada_fds": 2.9551258664720903,
+    "letalidade_madrugada_util": 1.8181818181818181,
+    "rr_letalidade_madrugada": 1.6253192265596499,
+    "rr_letalidade_madrugada_ic": [
+      1.3345273196433955,
+      1.9794743422190475
+    ],
+    "or_madrugada_ajustado": 1.7178391865941478,
+    "or_madrugada_ajustado_ic": [
+      1.390157093315367,
+      2.1227611506557946
+    ],
+    "or_madrugada_ajustado_p": 5.429194424606845e-07,
     "rr_madrugada": {
       "risco_exposto_pct": 2.1537798836958864,
       "risco_nao_exposto_pct": 1.3601440362229709,

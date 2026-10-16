@@ -12,7 +12,7 @@ Projeto do curso de Ciência de Dados (IFCE).
 |---|---|
 | **Mortes** | Caem de forma contínua: 255 em 2015, 140 em 2024 (−6,6% ao ano). |
 | **Acidentes** | Não caem aos poucos: há um **degrau em janeiro de 2018** (de ~1.450 para ~960 por mês), provavelmente uma mudança no registro, a confirmar com a AMC. |
-| **Horário** | A letalidade dobra de madrugada e à noite (chance de morte 1,9× e 2,0× a da manhã) e sobe no fim de semana (1,6×), com efeitos independentes. |
+| **Madrugada do fim de semana** | Morrem 1,7 vez mais pessoas por dia que na madrugada de dia útil (15,8 contra 9,5 mortos a cada 100 dias). O número de acidentes é quase igual; o que aumenta é a gravidade. |
 | **Veículos** | Com moto, 96,5% dos acidentes têm vítima (60% sem moto). Ônibus, caminhão e bicicleta tornam o acidente 3 a 4 vezes mais letal que só com carros. |
 | **Natureza** | Atropelamentos são 38% dos acidentes fatais. |
 | **Bairros** | População e malha viária explicam ~40% das diferenças. O Centro tem 4,2 vezes os acidentes esperados; Aldeota, Meireles e outros polos de comércio, 2,3 a 2,7 vezes. |
@@ -115,7 +115,7 @@ Registradas em `dados/processados/log_limpeza.csv` e detalhadas em `notebooks/01
 |---|---|---|
 | H5 (bairros) | R² = 0,95 usando as motos envolvidas nos próprios acidentes (circular) | Binomial Negativa com população (IBGE) e malha viária (OSM): pseudo-R² ≈ 0,4 |
 | H4 / qui-quadrado | "Não informado" como categoria: V = 0,24 | Sem ele: V = 0,05; efeito específico de "sem controle" com regressão logística |
-| H1 | "Madrugada OU fim de semana" num grupo, V = 0,03 | Efeitos separados, razões de chances ajustadas |
+| H1 | "Madrugada OU fim de semana" num grupo, V = 0,03 | Madrugada do fim de semana comparada com a de dia útil: mortes por dia, letalidade e regressão ajustada |
 | H3 | Reta única, "queda contínua" | Quebra estrutural em jan/2018; tendência das mortes |
 | H2 | ANOVA em contagens | Poisson com erros robustos |
 | Passo 10 | R² feridos × severidade (tautológico) | Kruskal-Wallis entre variáveis independentes |

@@ -164,9 +164,10 @@ class TrafegoPipeline:
             "h5": analises.h5_bairros(self.df),
         }
         self.resultados.update({k: v["resumo"] for k, v in h.items()})
-        or1 = h["h1"]["resumo"]["or_ajustado"]
-        self._print(f"H1: OR madrugada {or1['Madrugada (vs. manhã)']['or']:.2f}, "
-                    f"fim de semana {or1['Fim de semana (vs. dia útil)']['or']:.2f}")
+        r1 = h["h1"]["resumo"]
+        self._print(f"H1: na madrugada, {r1['madrugada_mortos_100_dias_fds']:.1f} mortos a cada 100 "
+                    f"dias de fim de semana vs. {r1['madrugada_mortos_100_dias_util']:.1f} em dia útil "
+                    f"(razão {r1['razao_mortes_dia']:.2f})")
         self._print(f"H2: com moto, {h['h2']['resumo']['pct_com_vitima_moto']:.1f}% têm vítima "
                     f"(sem moto: {h['h2']['resumo']['pct_com_vitima_sem_moto']:.1f}%)")
         r3 = h["h3"]["resumo"]

@@ -114,14 +114,14 @@ def documento(caminho, titulo):
 
 def tabela_hipoteses(r):
     h1, h2, h3, h4, h5 = r["h1"], r["h2"], r["h3"], r["h4"], r["h5"]
-    om = h1["or_ajustado"]
     return tabela([
         ["Hipótese", "Resultado", "Conclusão"],
-        ["H1. A letalidade é maior de madrugada e no fim de semana",
-         f"Chance de morte: madrugada {n(om['Madrugada (vs. manhã)']['or'], 2)}×, noite "
-         f"{n(om['Noite (vs. manhã)']['or'], 2)}× (vs. manhã); fim de semana "
-         f"{n(om['Fim de semana (vs. dia útil)']['or'], 2)}× (vs. dia útil), já descontado o "
-         f"efeito dos veículos e do ano", "Confirmada: efeitos independentes"],
+        ["H1. Há mais mortes na madrugada do fim de semana que na madrugada de dia útil",
+         f"{n(h1['madrugada_mortos_100_dias_fds'], 1)} contra "
+         f"{n(h1['madrugada_mortos_100_dias_util'], 1)} mortos a cada 100 dias "
+         f"({n(h1['razao_mortes_dia'], 2)}×); letalidade {pct(h1['letalidade_madrugada_fds'], 2)} "
+         f"contra {pct(h1['letalidade_madrugada_util'], 2)}",
+         "Confirmada: mesmo número de acidentes, mais graves"],
         ["H2. A presença de motos aumenta o número de vítimas",
          f"{pct(h2['pct_com_vitima_moto'])} dos acidentes com moto têm vítima, contra "
          f"{pct(h2['pct_com_vitima_sem_moto'])} sem moto; número de vítimas "
@@ -160,9 +160,9 @@ def relatorio_executivo(r):
             f"a menos por ano.",
             "<b>A queda no número de acidentes não é uma tendência:</b> é um degrau em janeiro "
             "de 2018, provavelmente uma mudança na forma de registro, que deve ser confirmada com a AMC.",
-            f"<b>A noite e o fim de semana matam mais:</b> um acidente na madrugada de fim de semana "
-            f"tem {pct(p3['letalidade_fds_madrugada'], 1)} de chance de ser fatal, 3 vezes a da manhã "
-            f"de dia útil ({pct(p3['letalidade_util_manha'], 2)}).",
+            f"<b>Na madrugada do fim de semana morrem {n(h1['razao_mortes_dia'], 1)} vez mais pessoas "
+            f"por dia</b> que na madrugada de dia útil. O número de acidentes é quase o mesmo; o que "
+            f"muda é a gravidade.",
             f"<b>Atropelamentos</b> são {pct(p7['pct_fatais_atropelamento'], 0)} dos acidentes "
             f"fatais; com moto envolvida, quase todo acidente deixa vítima.",
             f"<b>A BR-116 é a via mais letal:</b> {n(br116['mortos'])} mortes em 10 anos, quase o "
@@ -172,12 +172,15 @@ def relatorio_executivo(r):
         P("1. Quando os acidentes acontecem e quando matam", "h1"),
         P(f"Os acidentes acompanham os horários de deslocamento, com picos às 7h e às 16h. A "
           f"<b>gravidade</b> segue outro padrão: a letalidade é de {pct(p3['letalidade_madrugada'], 2)} "
-          f"de madrugada contra {pct(p3['letalidade_manha'], 2)} de manhã. Considerando ao mesmo tempo "
-          f"o horário, o dia, os veículos e o ano, a chance de um acidente ser fatal é "
-          f"{n(h1['or_ajustado']['Madrugada (vs. manhã)']['or'], 1)} vez maior de madrugada e "
-          f"{n(h1['or_ajustado']['Fim de semana (vs. dia útil)']['or'], 1)} vez maior no fim de "
-          f"semana. Os dois efeitos são independentes e se somam."),
-        figura("06_letalidade_faixa_fim_de_semana", 16),
+          f"de madrugada contra {pct(p3['letalidade_manha'], 2)} de manhã. Na <b>madrugada do fim de "
+          f"semana</b> morrem {n(h1['madrugada_mortos_100_dias_fds'], 1)} pessoas a cada 100 dias, "
+          f"contra {n(h1['madrugada_mortos_100_dias_util'], 1)} na madrugada de dia útil: "
+          f"{n(h1['razao_mortes_dia'], 2)} vez mais (IC 95%: {n(h1['razao_mortes_dia_ic'][0], 2)} a "
+          f"{n(h1['razao_mortes_dia_ic'][1], 2)}). Como o número de acidentes por dia é quase igual, "
+          f"o aumento vem da gravidade: {pct(h1['letalidade_madrugada_fds'], 2)} dos acidentes são "
+          f"fatais, contra {pct(h1['letalidade_madrugada_util'], 2)}. No fim de semana, a noite é a "
+          f"faixa com mais mortes por dia."),
+        figura("18_h1_madrugada_fim_de_semana", 17),
 
         P("2. Tendência: o que de fato melhorou", "h1"),
         P(f"Até 2017 eram cerca de {n(p1['media_anual_2015_2017'] / 1000, 1)} mil acidentes por "
@@ -343,14 +346,21 @@ def relatorio_passos(r):
               f"foi removido: é tautológico, pois a severidade é definida pelos feridos."),
 
         P("Passo 11. As cinco hipóteses", "h1"),
-        P("H1. Letalidade, madrugada e fim de semana", "h2"),
-        P(f"Regressão logística com {n(h1['n_modelo'])} acidentes. Razões de chances ajustadas: "
-          + "; ".join(f"{k} {n(v['or'], 2)} ({n(v['ic'][0], 2)}-{n(v['ic'][1], 2)})"
-                      for k, v in h1["or_ajustado"].items())
-          + f". Interação faixa × fim de semana não significativa (p = {n(h1['menor_p_interacao'], 2)})."),
-        figura("18_h1_razao_de_chances", 15.5),
-        mudou("antes, 'madrugada OU fim de semana' num único grupo; agora efeitos separados e "
-              "ajustados."),
+        P("H1. Mortes na madrugada do fim de semana", "h2"),
+        P(f"H0: as mortes por dia na madrugada não diferem entre fim de semana e dia útil. "
+          f"Madrugada de fim de semana: {n(h1['madrugada_mortos_fds'])} mortos em "
+          f"{n(h1['dias_fds'])} dias; de dia útil: {n(h1['madrugada_mortos_util'])} mortos em "
+          f"{n(h1['dias_util'])} dias. Razão de taxas (Poisson) {n(h1['razao_mortes_dia'], 2)} "
+          f"(IC {n(h1['razao_mortes_dia_ic'][0], 2)}-{n(h1['razao_mortes_dia_ic'][1], 2)}; "
+          f"p &lt; 0,001). Letalidade {pct(h1['letalidade_madrugada_fds'], 2)} contra "
+          f"{pct(h1['letalidade_madrugada_util'], 2)} (RR {n(h1['rr_letalidade_madrugada'], 2)}). "
+          f"Regressão logística só com a madrugada, ajustada por veículos e ano: OR "
+          f"{n(h1['or_madrugada_ajustado'], 2)} (IC {n(h1['or_madrugada_ajustado_ic'][0], 2)}-"
+          f"{n(h1['or_madrugada_ajustado_ic'][1], 2)}). Rejeita-se H0."),
+        figura("18_h1_madrugada_fim_de_semana", 17),
+        mudou("antes, 'madrugada OU fim de semana' num único grupo, o que diluía justamente a "
+              "combinação que se queria testar; agora a madrugada do fim de semana é comparada "
+              "diretamente com a de dia útil."),
 
         P("H2. Motos e vítimas", "h2"),
         P(f"Com moto: {pct(h2['pct_com_vitima_moto'])} dos acidentes têm vítima; sem moto: "

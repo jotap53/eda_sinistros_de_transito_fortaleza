@@ -589,15 +589,47 @@ def _floresta(ax, tab, rotulo_x, referencia=1.0):
 
 
 def fig18_h1(res):
-    t = res["odds_ratios"]
-    fig, ax = _figura(11.5, 5.8, esquerda=0.3, direita=0.93)
-    _floresta(ax, t, "Razão de chances de o acidente ser fatal (escala log, IC 95%)")
-    ax.set_xlim(0.4, 5)
-    _cabecalho(fig, "H1 confirmada: madrugada, noite e fim de semana elevam a chance de morte, "
-               "cada um por si",
-               "Regressão logística ajustada por faixa horária, tipo de dia, perfil de veículos e ano. "
-               "Laranja: aumenta o risco; azul: reduz.")
-    salvar(fig, "18_h1_razao_de_chances")
+    """Mortes por dia em cada faixa (dia útil x fim de semana) e as três medidas da H1."""
+    m = res["mortes_por_dia"]
+    r = res["resumo"]
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13.5, 5.8),
+                                   gridspec_kw={"width_ratios": [1.15, 1]})
+    fig.subplots_adjust(top=0.78, bottom=0.14, left=0.05, right=0.95, wspace=0.62)
+
+    # Esquerda: mortos a cada 100 dias, por faixa e tipo de dia
+    x = np.arange(len(config.FAIXAS))
+    for desloc, fds, cor, nome in [(-0.19, False, AZUL, "Dia útil"),
+                                   (0.19, True, LARANJA, "Fim de semana")]:
+        d = m[m["fim_de_semana"] == fds].set_index("faixa_horaria").reindex(config.FAIXAS)
+        ax1.bar(x + desloc, d["mortos_100_dias"], width=0.36, color=cor, label=nome)
+        for xi, v in zip(x + desloc, d["mortos_100_dias"]):
+            ax1.text(xi, v + 0.3, _fmt(v, 1), ha="center", fontsize=8.5, color=TINTA_2)
+    ax1.set_xticks(x, ["Madrugada\n0h-6h", "Manhã\n6h-12h", "Tarde\n12h-18h", "Noite\n18h-24h"])
+    ax1.axvspan(-0.5, 0.5, color=GRADE, alpha=0.5, zorder=0)
+    _grade(ax1, "y")
+    ax1.set_ylabel("Mortos a cada 100 dias")
+    ax1.legend(loc="upper left")
+    ax1.set_title("Mortos por dia, em cada faixa horária", fontsize=10.5, pad=8)
+
+    # Direita: madrugada do fim de semana x madrugada de dia útil, três medidas
+    tab = pd.DataFrame({
+        "coef": [r["razao_mortes_dia"], r["rr_letalidade_madrugada"], r["or_madrugada_ajustado"]],
+        "ic_inf": [r["razao_mortes_dia_ic"][0], r["rr_letalidade_madrugada_ic"][0],
+                   r["or_madrugada_ajustado_ic"][0]],
+        "ic_sup": [r["razao_mortes_dia_ic"][1], r["rr_letalidade_madrugada_ic"][1],
+                   r["or_madrugada_ajustado_ic"][1]],
+    }, index=["Mortes por dia", "Letalidade\n(% de acidentes fatais)",
+              "Chance de morte ajustada\n(veículos e ano)"])
+    _floresta(ax2, tab, "Fim de semana ÷ dia útil, só na madrugada (IC 95%)")
+    ax2.set_xlim(0.8, 3)
+    ax2.set_title("Madrugada: fim de semana vs. dia útil", fontsize=10.5, pad=8)
+
+    _cabecalho(fig, f"H1 confirmada: na madrugada do fim de semana morrem "
+               f"{_fmt(r['razao_mortes_dia'], 1)} vez mais pessoas por dia que na de dia útil",
+               f"{_fmt(r['madrugada_mortos_100_dias_fds'], 1)} contra "
+               f"{_fmt(r['madrugada_mortos_100_dias_util'], 1)} mortos a cada 100 dias. "
+               f"O número de acidentes por dia é quase igual: o que aumenta é a gravidade.")
+    salvar(fig, "18_h1_madrugada_fim_de_semana")
     return fig
 
 
