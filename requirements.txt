@@ -1,0 +1,21 @@
+# Análise
+pandas==3.0.6
+numpy==2.5.4
+scipy==1.18.1
+statsmodels==0.15.0
+pyarrow==26.0.0
+
+# Geoespacial e dados externos
+geopandas==1.2.0
+shapely==2.2.0
+pyogrio==0.13.0
+osmnx==2.1.1
+
+# Gráficos, mapas e relatórios
+matplotlib==3.11.2
+folium==0.20.0
+branca==0.8.2
+reportlab==5.0.1
+
+# Notebooks
+ipykernel==7.4.0

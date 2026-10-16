@@ -1,0 +1,708 @@
+{
+  "passo1": {
+    "acidentes": 130766,
+    "mortos": 1986,
+    "acidentes_fatais": 1926,
+    "letalidade_pct": 1.472859917715614,
+    "pct_com_vitima": 82.65910098955386,
+    "media_anual_2015_2017": 17439.333333333332,
+    "media_anual_2018_2024": 11206.857142857143,
+    "mortos_2015": 255,
+    "mortos_2024": 140
+  },
+  "passo2": {
+    "hora_pico": 16,
+    "acidentes_pico": 8168,
+    "hora_vale": 1
+  },
+  "passo3": {
+    "pct_fim_de_semana": 27.344263799458574,
+    "media_dia_util": 36.41565292209942,
+    "media_sabado": 38.25670498084291,
+    "media_domingo": 30.243295019157088,
+    "letalidade_madrugada": 2.1537798836958864,
+    "letalidade_manha": 1.0419404946827577,
+    "letalidade_fds_madrugada": 2.9551258664720903,
+    "letalidade_util_manha": 0.984009840098401
+  },
+  "passo4": {
+    "top_acidentes": [
+      {
+        "bairro": "Centro",
+        "acidentes": 7257,
+        "pct": 5.5646719627028185,
+        "por_10k_hab_ano": 301.1703187250996
+      },
+      {
+        "bairro": "Aldeota",
+        "acidentes": 5404,
+        "pct": 4.143790448731711,
+        "por_10k_hab_ano": 126.91404415218412
+      },
+      {
+        "bairro": "Meireles",
+        "acidentes": 4127,
+        "pct": 3.1645860810354876,
+        "por_10k_hab_ano": 107.54677646323032
+      },
+      {
+        "bairro": "Parangaba",
+        "acidentes": 3544,
+        "pct": 2.717541330552403,
+        "por_10k_hab_ano": 126.30078403421241
+      },
+      {
+        "bairro": "Fátima",
+        "acidentes": 3384,
+        "pct": 2.5948532343649355,
+        "por_10k_hab_ano": 146.40477632603614
+      }
+    ],
+    "top_mortos": [
+      {
+        "bairro": "Centro",
+        "mortos": 73,
+        "pct": 3.6905965621840244,
+        "por_100k_hab_ano": 30.295484727755642
+      },
+      {
+        "bairro": "Cajazeiras",
+        "mortos": 55,
+        "pct": 2.7805864509605662,
+        "por_100k_hab_ano": 39.70545769563962
+      },
+      {
+        "bairro": "Messejana",
+        "mortos": 53,
+        "pct": 2.679474216380182,
+        "por_100k_hab_ano": 12.267098715426453
+      },
+      {
+        "bairro": "Mondubim",
+        "mortos": 50,
+        "pct": 2.5278058645096055,
+        "por_100k_hab_ano": 8.00768737988469
+      },
+      {
+        "bairro": "Prefeito José Walter",
+        "mortos": 50,
+        "pct": 2.5278058645096055,
+        "por_100k_hab_ano": 9.353661958656813
+      }
+    ],
+    "top_taxa_mortos": [
+      {
+        "bairro": "Moura Brasil",
+        "mortos": 15,
+        "por_100k_hab_ano": 49.521294156487286
+      },
+      {
+        "bairro": "Cajazeiras",
+        "mortos": 55,
+        "por_100k_hab_ano": 39.70545769563962
+      },
+      {
+        "bairro": "Praia do Futuro I",
+        "mortos": 14,
+        "por_100k_hab_ano": 32.34003234003234
+      },
+      {
+        "bairro": "Centro",
+        "mortos": 73,
+        "por_100k_hab_ano": 30.295484727755642
+      },
+      {
+        "bairro": "Aerolândia",
+        "mortos": 26,
+        "por_100k_hab_ano": 27.75405636208369
+      }
+    ],
+    "media_cidade_acid_10k_hab_ano": 53.69603921097142,
+    "media_cidade_mortos_100k_hab_ano": 8.144247888177583
+  },
+  "vias": {
+    "vias_distintas": 6227,
+    "pct_top": 23.064099230686878,
+    "top": [
+      {
+        "via": "Av. Washington Soares / CE-040",
+        "acidentes": 3539,
+        "mortos": 58
+      },
+      {
+        "via": "BR-116",
+        "acidentes": 3315,
+        "mortos": 140
+      },
+      {
+        "via": "Avenida General Osório de Paiva",
+        "acidentes": 2669,
+        "mortos": 72
+      },
+      {
+        "via": "Avenida Doutor Silas Munguba",
+        "acidentes": 1615,
+        "mortos": 30
+      },
+      {
+        "via": "Avenida Godofredo Maciel",
+        "acidentes": 1564,
+        "mortos": 36
+      },
+      {
+        "via": "Avenida Presidente Castelo Branco",
+        "acidentes": 1552,
+        "mortos": 53
+      },
+      {
+        "via": "Avenida Presidente Costa e Silva",
+        "acidentes": 1535,
+        "mortos": 42
+      },
+      {
+        "via": "Avenida Bernardo Manuel",
+        "acidentes": 1282,
+        "mortos": 12
+      },
+      {
+        "via": "Avenida Francisco Sá",
+        "acidentes": 1245,
+        "mortos": 16
+      },
+      {
+        "via": "Avenida Santos Dumont",
+        "acidentes": 1207,
+        "mortos": 9
+      }
+    ],
+    "top_mortos": [
+      {
+        "via": "BR-116",
+        "mortos": 140,
+        "acidentes": 3315
+      },
+      {
+        "via": "Avenida General Osório de Paiva",
+        "mortos": 72,
+        "acidentes": 2669
+      },
+      {
+        "via": "Av. Washington Soares / CE-040",
+        "mortos": 58,
+        "acidentes": 3539
+      },
+      {
+        "via": "Avenida Presidente Castelo Branco",
+        "mortos": 53,
+        "acidentes": 1552
+      },
+      {
+        "via": "Avenida Presidente Costa e Silva",
+        "mortos": 42,
+        "acidentes": 1535
+      }
+    ]
+  },
+  "passo5": {
+    "acidentes_com_veiculo_informado": 118797,
+    "pct_com_automovel": 70.22988796013367,
+    "pct_com_moto": 63.48224281757957,
+    "pct_moto_ou_ciclomotor": 63.914071904172665
+  },
+  "passo6": {
+    "auto_e_moto": 44937,
+    "so_automovel": 29976,
+    "so_moto": 27470,
+    "bicicleta_e_automovel": 2141,
+    "bicicleta_e_moto": 326
+  },
+  "passo7": {
+    "por_veiculo": {
+      "Tração animal": {
+        "pct": 23.076923076923077,
+        "ic": [
+          8.179528718498563,
+          50.2563759467275
+        ],
+        "n": 13
+      },
+      "Trem": {
+        "pct": 12.727272727272727,
+        "ic": [
+          6.304210427364633,
+          24.01702765590908
+        ],
+        "n": 55
+      },
+      "Ciclomotor": {
+        "pct": 5.208333333333333,
+        "ic": [
+          3.6723562963733,
+          7.337801368195487
+        ],
+        "n": 576
+      },
+      "Caminhão": {
+        "pct": 3.839074414935577,
+        "ic": [
+          3.273531150881776,
+          4.497779055252779
+        ],
+        "n": 3803
+      },
+      "Ônibus": {
+        "pct": 3.5453100158982513,
+        "ic": [
+          3.115929096994537,
+          4.031398362140141
+        ],
+        "n": 6290
+      },
+      "Bicicleta": {
+        "pct": 2.886307638155579,
+        "ic": [
+          2.4818026076026074,
+          3.3544744188328384
+        ],
+        "n": 5682
+      },
+      "Micro-ônibus": {
+        "pct": 2.0,
+        "ic": [
+          1.2157103867468637,
+          3.2734906812914395
+        ],
+        "n": 750
+      },
+      "Motocicleta": {
+        "pct": 1.5938473778426043,
+        "ic": [
+          1.506898471009906,
+          1.6857274196110679
+        ],
+        "n": 75415
+      },
+      "Automóvel": {
+        "pct": 1.0032242212127387,
+        "ic": [
+          0.9378211247596897,
+          1.073139080215103
+        ],
+        "n": 83431
+      }
+    },
+    "atropelamento_pct": 6.469798657718121,
+    "atropelamento_fatais": 723,
+    "pct_fatais_atropelamento": 37.53894080996885,
+    "obstaculo_pct": 7.6458036984352775
+  },
+  "passo8": {
+    "moto_feridos": 0.3444141823111168,
+    "auto_ilesos": 0.44674791995250573,
+    "auto_total": 0.5937729881810139,
+    "moto_mortos": -0.004461734926363321
+  },
+  "passo9": {
+    "controle": {
+      "qui2": 244.07027774674364,
+      "p": 3.110536893757512e-48,
+      "gl": 8,
+      "v_cramer": 0.04928925056481259,
+      "n": 50232,
+      "menor_esperado": 6.428372352285396,
+      "descartadas": [
+        "Cancela",
+        "Faixa de pedestre"
+      ]
+    },
+    "controle_com_ni": {
+      "qui2": 14592.76722174802,
+      "p": 0.0,
+      "gl": 10,
+      "v_cramer": 0.2372590826333404,
+      "n": 129617,
+      "menor_esperado": 7.280989376393529,
+      "descartadas": [
+        "Cancela",
+        "Faixa de pedestre"
+      ]
+    },
+    "cruzamento": {
+      "qui2": 3628.0507241486866,
+      "p": 0.0,
+      "gl": 10,
+      "v_cramer": 0.1269445914783843,
+      "n": 112568,
+      "menor_esperado": 4.0077108947480635,
+      "descartadas": [
+        "Com via férrea"
+      ]
+    },
+    "cruzamento_com_ni": {
+      "qui2": 4775.37977621221,
+      "p": 0.0,
+      "gl": 12,
+      "v_cramer": 0.1357233675614725,
+      "n": 129619,
+      "menor_esperado": 4.589026300156613,
+      "descartadas": [
+        "Com via férrea"
+      ]
+    },
+    "controle_por_periodo": {
+      "2015-2017": {
+        "v_cramer": 0.049021619863388315,
+        "n": 30707,
+        "p": 6.250981390448054e-28
+      },
+      "2018-2024": {
+        "v_cramer": 0.07832410187366409,
+        "n": 19525,
+        "p": 2.8081036041843023e-47
+      }
+    },
+    "pct_controle_informado": 39.002493002768304
+  },
+  "passo10": {
+    "natureza": {
+      "H": 9106.730081521362,
+      "p": 0.0,
+      "k": 12,
+      "n": 128686,
+      "eta2": 0.0706881738464753
+    },
+    "perfil": {
+      "H": 13416.566925639261,
+      "p": 0.0,
+      "k": 6,
+      "n": 118797,
+      "eta2": 0.11290053055904287
+    },
+    "r2_tautologico_feridos_severidade": 0.4415582451738952
+  },
+  "h1": {
+    "rr_madrugada": {
+      "risco_exposto_pct": 2.1537798836958864,
+      "risco_nao_exposto_pct": 1.3601440362229709,
+      "rr": 1.5834939729447988,
+      "rr_ic": [
+        1.419974344843955,
+        1.765843989687049
+      ],
+      "or": 1.5963377760032358,
+      "or_ic": [
+        1.4283282284821972,
+        1.784109733518949
+      ],
+      "p": 1.1102230246251565e-16
+    },
+    "rr_fim_de_semana": {
+      "risco_exposto_pct": 1.960455295466622,
+      "risco_nao_exposto_pct": 1.2893515351177256,
+      "rr": 1.5204971197305166,
+      "rr_ic": [
+        1.386823186027809,
+        1.6670556956367741
+      ],
+      "or": 1.5309052804143108,
+      "or_ic": [
+        1.3940737463738127,
+        1.6811671431993127
+      ],
+      "p": 0.0
+    },
+    "or_ajustado": {
+      "Madrugada (vs. manhã)": {
+        "or": 1.9027042526824907,
+        "ic": [
+          1.654181097339139,
+          2.1885653747340625
+        ],
+        "p": 2.105657742809289e-19
+      },
+      "Noite (vs. manhã)": {
+        "or": 1.966961922022144,
+        "ic": [
+          1.720826531996349,
+          2.2483028537435725
+        ],
+        "p": 3.475491163700165e-23
+      },
+      "Tarde (vs. manhã)": {
+        "or": 1.2514465878393128,
+        "ic": [
+          1.1019990458996243,
+          1.421161450222625
+        ],
+        "p": 0.0005465654025925561
+      },
+      "Fim de semana (vs. dia útil)": {
+        "or": 1.5773639966373918,
+        "ic": [
+          1.4329756148652655,
+          1.7363011289775683
+        ],
+        "p": 1.344490002517585e-20
+      },
+      "Envolve bicicleta (vs. só automóvel)": {
+        "or": 2.277113710378057,
+        "ic": [
+          1.8858719396631154,
+          2.7495222453535177
+        ],
+        "p": 1.173485522265101e-17
+      },
+      "Envolve ônibus/caminhão (vs. só automóvel)": {
+        "or": 2.7172515861539264,
+        "ic": [
+          2.3400409887579605,
+          3.155267885446313
+        ],
+        "p": 2.9118072531069875e-39
+      },
+      "Moto + automóvel (vs. só automóvel)": {
+        "or": 0.6412768360687078,
+        "ic": [
+          0.5541867669351235,
+          0.7420530496471314
+        ],
+        "p": 2.430792504876351e-09
+      },
+      "Só moto (vs. só automóvel)": {
+        "or": 1.7687975229148836,
+        "ic": [
+          1.5499140275049015,
+          2.0185924003194002
+        ],
+        "p": 2.639756107526497e-17
+      }
+    },
+    "menor_p_interacao": 0.0616893147574155,
+    "n_modelo": 118763
+  },
+  "h2": {
+    "pct_com_vitima_moto": 96.50853440101149,
+    "pct_com_vitima_sem_moto": 60.27898947957732,
+    "rr_vitima_moto": 1.6010310596482185,
+    "rr_ic": [
+      1.588587661626166,
+      1.613571926735451
+    ],
+    "irr": {
+      "Envolve bicicleta": {
+        "irr": 1.4452625934955348,
+        "ic": [
+          1.4235698658382874,
+          1.4672858805756137
+        ],
+        "p": 0.0
+      },
+      "Envolve ônibus/caminhão": {
+        "irr": 1.0029467122536952,
+        "ic": [
+          0.9798311319179139,
+          1.0266076213066953
+        ],
+        "p": 0.8046574616165669
+      },
+      "Moto + automóvel": {
+        "irr": 1.5906418524401997,
+        "ic": [
+          1.570841760581778,
+          1.6106915198112162
+        ],
+        "p": 0.0
+      },
+      "Só moto": {
+        "irr": 1.6170409805566521,
+        "ic": [
+          1.5964874274771843,
+          1.6378591448926318
+        ],
+        "p": 0.0
+      }
+    },
+    "dispersao_poisson": 0.4493389931318441
+  },
+  "h3": {
+    "quebra_mes": "2018-01",
+    "quebra_F": 58.45667222875763,
+    "r2_linear": 0.4159699319212846,
+    "r2_segmentado": 0.7781169589403008,
+    "degrau_mensal": -584.9354250706991,
+    "degrau_p": 8.152300332297656e-11,
+    "tendencia_antes_mes": -3.30701248811299,
+    "tendencia_antes_p": 0.22878439730911493,
+    "tendencia_depois_mes": 0.4069771970836822,
+    "covid_mensal": -200.34875379347824,
+    "covid_p": 0.0016896410020228257,
+    "media_mensal_antes": 1453.2777777777778,
+    "media_mensal_depois_sem_covid": 958.1621621621622,
+    "mortes_variacao_anual_pct": -6.646494667142633,
+    "mortes_ic_pct": [
+      -8.081831528377027,
+      -5.188744479582519
+    ],
+    "mortes_quebra_F_max": 4.471828390913199
+  },
+  "h4": {
+    "v_cramer_sem_ni": 0.04928925056481259,
+    "v_cramer_com_ni": 0.2372590826333404,
+    "p_sem_ni": 3.110536893757512e-48,
+    "n_sem_ni": 50232,
+    "or": {
+      "Pare (vs. semáforo)": {
+        "or": 1.017859757087432,
+        "ic": [
+          0.8332885507823938,
+          1.2433129965908274
+        ],
+        "p": 0.8623286223947619
+      },
+      "Sem controle (vs. semáforo)": {
+        "or": 1.6173947579650296,
+        "ic": [
+          1.3319886297556174,
+          1.9639550553616314
+        ],
+        "p": 1.2096390081076222e-06
+      }
+    },
+    "letalidade": {
+      "Pare": 1.0400466562986004,
+      "Semáforo": 1.1612411955073292,
+      "Sem controle": 1.8161601186063752,
+      "Gesto (agente)": 1.8425460636515913,
+      "Dê a preferência": 1.2096774193548387
+    }
+  },
+  "h5": {
+    "pseudo_r2": {
+      "População": 0.34452181879565336,
+      "Km de vias": 0.36543345220563583,
+      "População + km de vias": 0.38503794522922774,
+      "População + km de vias + cruzamentos/km": 0.4176608070224218
+    },
+    "r2_circular_versao_anterior": 0.940505777393577,
+    "coeficientes": {
+      "log(população)": {
+        "coef": 0.401879030425814,
+        "p": 0.003594887109507559
+      },
+      "log(km de vias)": {
+        "coef": 0.4090922993522087,
+        "p": 0.004545812832905045
+      },
+      "log(cruzamentos por km)": {
+        "coef": -1.0330056717364868,
+        "p": 0.003095841460264178
+      }
+    },
+    "maior_excesso": [
+      {
+        "bairro": "Centro",
+        "observado": 7257,
+        "esperado": 1718.4885072616364,
+        "razao": 4.222897022199949
+      },
+      {
+        "bairro": "Aldeota",
+        "observado": 5404,
+        "esperado": 2016.2357027793482,
+        "razao": 2.6802421921954234
+      },
+      {
+        "bairro": "Meireles",
+        "observado": 4127,
+        "esperado": 1572.8314300845636,
+        "razao": 2.6239302706318064
+      },
+      {
+        "bairro": "José Bonifácio",
+        "observado": 1567,
+        "esperado": 605.4473884510028,
+        "razao": 2.588168732561662
+      },
+      {
+        "bairro": "Fátima",
+        "observado": 3384,
+        "esperado": 1396.082862092443,
+        "razao": 2.42392489148393
+      },
+      {
+        "bairro": "Parangaba",
+        "observado": 3544,
+        "esperado": 1514.6509178973663,
+        "razao": 2.339813060635628
+      }
+    ]
+  },
+  "limpeza": [
+    {
+      "etapa": "Leitura",
+      "linhas_afetadas": 130820,
+      "linhas_resultantes": 130820,
+      "descricao": "Base recebida da etapa de ETL anterior (3 registros sem código do acidente já tinham sido removidos lá: 130.823 -> 130.820)."
+    },
+    {
+      "etapa": "Duplicatas",
+      "linhas_afetadas": 54,
+      "linhas_resultantes": 130766,
+      "descricao": "Linhas idênticas em todas as 27 colunas removidas (mantida 1 cópia)."
+    },
+    {
+      "etapa": "Tempo",
+      "linhas_afetadas": 0,
+      "linhas_resultantes": 130766,
+      "descricao": "Dia da semana, fim de semana e faixa horária recalculados a partir da data e da hora e conferidos contra as colunas originais: 0 divergências."
+    },
+    {
+      "etapa": "Bairro",
+      "linhas_afetadas": 354,
+      "linhas_resultantes": 130766,
+      "descricao": "Bairro reatribuído pelas coordenadas com a malha oficial do IBGE (Censo 2022, 121 bairros); 385 pontos na orla ou nas divisas receberam o bairro mais próximo (até 300 m). Concordância com o bairro original: 96,2%. Linhas afetadas = pontos fora do município, que ficam sem bairro."
+    },
+    {
+      "etapa": "Vias",
+      "linhas_afetadas": 5275,
+      "linhas_resultantes": 130766,
+      "descricao": "Nomes de via padronizados: 11.502 grafias -> 6.227 vias (abreviações, acentos, complementos, grafias sem tipo, erros de digitação e nomes diferentes do mesmo corredor, como CE-040 e Av. Washington Soares). Linhas afetadas = grafias unificadas. Mapeamento salvo em vias_mapeamento_nomes.csv."
+    },
+    {
+      "etapa": "Categorias",
+      "linhas_afetadas": 17425,
+      "linhas_resultantes": 130766,
+      "descricao": "'tipo_cruzamento': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (13,3%)."
+    },
+    {
+      "etapa": "Categorias",
+      "linhas_afetadas": 79764,
+      "linhas_resultantes": 130766,
+      "descricao": "'controle_trafego': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (61,0%)."
+    },
+    {
+      "etapa": "Categorias",
+      "linhas_afetadas": 28510,
+      "linhas_resultantes": 130766,
+      "descricao": "'uso_solo': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (21,8%)."
+    },
+    {
+      "etapa": "Categorias",
+      "linhas_afetadas": 1254,
+      "linhas_resultantes": 130766,
+      "descricao": "'natureza': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (1,0%)."
+    },
+    {
+      "etapa": "Severidade",
+      "linhas_afetadas": 11601,
+      "linhas_resultantes": 130766,
+      "descricao": "Severidade recalculada pelas contagens de vítimas: 8.167 'não informado' preenchidas e 3.434 contraditórias corrigidas (ex.: 'ileso' com feridos > 0). Ficam sem severidade 1.069 acidentes sem nenhuma pessoa contabilizada."
+    },
+    {
+      "etapa": "Veículos",
+      "linhas_afetadas": 11969,
+      "linhas_resultantes": 130766,
+      "descricao": "Acidentes com todas as colunas de veículo zeradas (9,2%, inclusive colisões) tratados como 'veículos não informados' e excluídos das análises por tipo de veículo."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+etapa,linhas_afetadas,linhas_resultantes,descricao
+Leitura,130820,130820,Base recebida da etapa de ETL anterior (3 registros sem código do acidente já tinham sido removidos lá: 130.823 -> 130.820).
+Duplicatas,54,130766,Linhas idênticas em todas as 27 colunas removidas (mantida 1 cópia).
+Tempo,0,130766,"Dia da semana, fim de semana e faixa horária recalculados a partir da data e da hora e conferidos contra as colunas originais: 0 divergências."
+Bairro,354,130766,"Bairro reatribuído pelas coordenadas com a malha oficial do IBGE (Censo 2022, 121 bairros); 385 pontos na orla ou nas divisas receberam o bairro mais próximo (até 300 m). Concordância com o bairro original: 96,2%. Linhas afetadas = pontos fora do município, que ficam sem bairro."
+Vias,5275,130766,"Nomes de via padronizados: 11.502 grafias -> 6.227 vias (abreviações, acentos, complementos, grafias sem tipo, erros de digitação e nomes diferentes do mesmo corredor, como CE-040 e Av. Washington Soares). Linhas afetadas = grafias unificadas. Mapeamento salvo em vias_mapeamento_nomes.csv."
+Categorias,17425,130766,"'tipo_cruzamento': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (13,3%)."
+Categorias,79764,130766,"'controle_trafego': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (61,0%)."
+Categorias,28510,130766,"'uso_solo': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (21,8%)."
+Categorias,1254,130766,"'natureza': rótulos padronizados; 'não informado' mantido como categoria própria e excluído nos testes (1,0%)."
+Severidade,11601,130766,Severidade recalculada pelas contagens de vítimas: 8.167 'não informado' preenchidas e 3.434 contraditórias corrigidas (ex.: 'ileso' com feridos > 0). Ficam sem severidade 1.069 acidentes sem nenhuma pessoa contabilizada.
+Veículos,11969,130766,"Acidentes com todas as colunas de veículo zeradas (9,2%, inclusive colisões) tratados como 'veículos não informados' e excluídos das análises por tipo de veículo."
