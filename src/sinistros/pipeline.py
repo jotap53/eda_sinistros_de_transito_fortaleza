@@ -192,6 +192,9 @@ class TrafegoPipeline:
         self._print(f"\nResultados salvos em {config.ARQ_RESULTADOS.relative_to(config.RAIZ)}")
         if self.gerar_graficos:
             self._print(f"Gráficos salvos em {config.FIGURAS.relative_to(config.RAIZ)}/")
+        from .dashboard_dados import exportar
+        pasta = exportar(self.df, _serializavel(self.resultados))
+        self._print(f"Dados do dashboard atualizados em {pasta.relative_to(config.RAIZ)}")
         return self
 
     def executar(self):

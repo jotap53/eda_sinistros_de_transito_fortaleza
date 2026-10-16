@@ -22,9 +22,30 @@ Projeto do curso de Ciência de Dados (IFCE).
 Relatórios: [relatorios/relatorio_executivo.pdf](relatorios/relatorio_executivo.pdf) (gerencial) e
 [relatorios/passos_analise.pdf](relatorios/passos_analise.pdf) (passo a passo técnico).
 
+## Dashboard
+
+Dashboard interativo em Streamlit, com 6 páginas (Visão geral, Quando, Mapa, Bairros e vias,
+Veículos, Hipóteses), tema claro e escuro e layout adaptado a computador, tablet e celular.
+
+**Rodar localmente** (a partir da raiz do projeto):
+
+```bash
+pip install -r dashboard/requirements.txt
+streamlit run dashboard/app.py
+```
+
+**Publicar no Streamlit Community Cloud:** em [share.streamlit.io](https://share.streamlit.io),
+"Create app" → escolha este repositório, branch `main` e o arquivo `dashboard/app.py`. Em
+"Advanced settings", selecione Python 3.12. O Cloud instala `dashboard/requirements.txt` e lê o
+tema em `.streamlit/config.toml`.
+
+Os dados do dashboard ficam em `dashboard/dados/` e são regenerados pelo pipeline
+(`python -m sinistros.pipeline`).
+
 ## Estrutura
 
 ```
+├── dashboard/                   ← dashboard Streamlit (app.py, páginas, dados e logos)
 ├── notebooks/
 │   ├── 00_pipeline.ipynb        ← executa tudo de ponta a ponta (TrafegoPipeline)
 │   ├── 01_limpeza.ipynb         ← ingestão, qualidade e limpeza
